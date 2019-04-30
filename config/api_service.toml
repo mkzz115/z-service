@@ -1,0 +1,4 @@
+[server]
+    addr = ":10230"
+[logger]
+    path = "./log"
