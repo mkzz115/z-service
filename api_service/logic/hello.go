@@ -8,7 +8,6 @@ import (
 )
 
 func Hello(w http.ResponseWriter, r *http.Request) {
-	log.Info("hello is called, data")
 	data, err := ioutil.ReadAll(r.Body)
 	defer r.Body.Close()
 	if err != nil {

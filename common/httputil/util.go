@@ -30,8 +30,8 @@ func NewAccess() HandleDecorator {
 					forwarded = item[0]
 				}
 			}
-			log.Info("_com_request_in,method[%s],forwarded[%s],remote[%s],uri[%d],params[%v],Content-Type[%s],time(us)[%d]",
-				r.Method, forwarded, r.RemoteAddr, r.URL.Path, r.URL.RawQuery, begin.UnixNano()/1e6)
+			log.Info("_com_request_in,method[%s],forwarded[%s],remote[%s],uri[%d],params[%s],Content-Type[%s],time(us)[%d]",
+				r.Method, forwarded, r.RemoteAddr, r.URL.Path, r.URL.RawQuery, r.Header.Get("Content-Type"), begin.UnixNano()/1e6)
 			f(w, r)
 			log.Info("_com_request_out,laency(ms)[%d]", int64(time.Since(begin)/time.Millisecond))
 		}
