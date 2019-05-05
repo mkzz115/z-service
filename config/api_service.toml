@@ -1,4 +1,7 @@
 [server]
-    addr = ":10230"
+    addr = "127.0.0.1:10239"
+[thrift_client]
+    addr = "127.0.0.1:10230"
+    timeout = 5
 [logger]
     path = "./log"

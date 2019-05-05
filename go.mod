@@ -6,5 +6,6 @@ require (
 	git.apache.org/thrift.git v0.0.0-20150427210205-dc799ca07862
 	github.com/BurntSushi/toml v0.3.1
 	github.com/julienschmidt/httprouter v1.2.0
+	github.com/sirupsen/logrus v1.4.2-0.20190423093405-5521996833c0
 	github.com/stretchr/testify v1.3.0
 )

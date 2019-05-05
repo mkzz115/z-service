@@ -2,9 +2,10 @@ package main
 
 import (
 	"os"
+	"path/filepath"
 
-	"github.com/mkzz115/z-service.git/api_service/config"
 	"github.com/mkzz115/z-service.git/api_service/processor"
+	"github.com/mkzz115/z-service.git/common/confutil"
 	"github.com/mkzz115/z-service.git/common/log"
 )
 
@@ -13,12 +14,17 @@ func main() {
 		panic("empty config file!")
 	}
 	configPath := os.Args[1]
-	cfg, err := config.FromToml(configPath)
+	cfg, err := confutil.FromToml(configPath)
 	if err != nil {
 		print("init error")
 		panic(err.Error())
 	}
-	log.Init(cfg.Logger.Path)
+
+	err = log.Init(filepath.Join(cfg.Logger.Path, os.Args[0]))
+	if err != nil {
+		print("init error")
+		panic(err.Error())
+	}
 	// install http service
 	s := processor.NewApiServer(cfg)
 	if err := s.Init(); err != nil {

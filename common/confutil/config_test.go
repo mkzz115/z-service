@@ -1,12 +1,13 @@
-package config
+package confutil
 
 import (
-	"github.com/stretchr/testify/require"
 	"os"
 	"testing"
+
+	"github.com/stretchr/testify/require"
 )
 
-func TestFromToml(t *testing.T) {
+func TestFromToml1(t *testing.T) {
 	wd, _ := os.Getwd()
 	t.Logf("path:%s", wd)
 	cfg, err := FromToml(wd + "/.test/test1.toml")
