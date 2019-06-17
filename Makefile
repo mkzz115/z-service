@@ -2,14 +2,17 @@ OUTPUT=./output
 API_NAME=api_service
 THRIFT_NAME=thrift_server
 
+BUILD = go build
+GOFLAGS = -mod=vendor
+
 all: install
 
 api:
 	@echo $(API_NAME)
-	go build -o ${OUTPUT}/${API_NAME} api_service/main.go
+	$(BUILD) $(GOFLAGS) -o ${OUTPUT}/${API_NAME} api_service/main.go
 	chmod u+x ${OUTPUT}/${API_NAME}
 srv:
-	go build -o ${OUTPUT}/${THRIFT_NAME} server/main.go
+	$(BUILD) $(GOFLAGS) -o ${OUTPUT}/${THRIFT_NAME} server/main.go
 	chmod u+x ${OUTPUT}/${THRIFT_NAME}
 	
 pre: clean
