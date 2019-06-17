@@ -5,9 +5,7 @@ import (
 	"time"
 
 	"github.com/julienschmidt/httprouter"
-	"github.com/mkzz115/z-service.git/api_service/logic"
 	"github.com/mkzz115/z-service.git/common/confutil"
-	"github.com/mkzz115/z-service.git/common/httputil"
 	"github.com/mkzz115/z-service.git/common/log"
 	"github.com/mkzz115/z-service.git/common/serve"
 )
@@ -25,13 +23,8 @@ func NewApiServer(cfg *confutil.Config) serve.Serve {
 func (s *ApiServer) Init() error {
 	log.Info("ApiServer.Init called")
 	// install driver
-	factory := httputil.HttpWrapper(
-		httputil.NewAccess(),
-	)
-	router := httprouter.New()
-	h := logic.NewLogicHandle(s.conf)
-	router.HandlerFunc(http.MethodPost, "/hello", factory(h.Hello))
-	s.router = router
+
+	s.router = NewApiRouter(s.conf)
 	return nil
 }
 

@@ -1,0 +1,11 @@
+[program:api_service]
+command=/home/dev/z-service/launch.sh thrift_server
+directory=/home/dev/z-service/thrift_server
+autostart=false
+startsecs=3
+autorestart=true
+startretries=1024
+stdout_logfile=/home/dev/z-service/thrift_server/log/super.log
+stderr_logfile=NONE
+redirect_stderr=true
+user=dev

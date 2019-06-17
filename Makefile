@@ -6,16 +6,14 @@ all: install
 
 api:
 	@echo $(API_NAME)
-	mkdir -p ${OUTPUT}/bin/$(API_NAME)
-	go build -o ${OUTPUT}/bin/$(API_NAME)/$(API_NAME) api_service/main.go
-	chmod u+x ${OUTPUT}/bin/$(API_NAME)
+	go build -o ${OUTPUT}/${API_NAME} api_service/main.go
+	chmod u+x ${OUTPUT}/${API_NAME}
 srv:
-	mkdir -p ${OUTPUT}/bin/${THRIFT_NAME}
-	go build -o ${OUTPUT}/bin/${THRIFT_NAME}/${THRIFT_NAME} api_service/main.go
-	chmod u+x ${OUTPUT}/bin/$(THRIFT_NAME)
+	go build -o ${OUTPUT}/${THRIFT_NAME} server/main.go
+	chmod u+x ${OUTPUT}/${THRIFT_NAME}
 	
 pre: clean
-	mkdir -p ${OUTPUT}/bin
+	mkdir -p ${OUTPUT}
 
 fmt:
 	go fmt -l -w -s ./

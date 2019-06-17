@@ -1,0 +1,11 @@
+[program:api_service]
+command=/home/dev/z-service/launch.sh api_service
+directory=/home/dev/z-service/api_service
+autostart=false
+startsecs=3
+autorestart=true
+startretries=1024
+stdout_logfile=/home/dev/z-service/api_service/log/super.log
+stderr_logfile=NONE
+redirect_stderr=true
+user=dev
