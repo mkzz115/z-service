@@ -1,5 +1,5 @@
 [program:api_service]
-command=/home/dev/z-service/launch.sh thrift_server
+command=/home/dev/z-service/launch.sh /home/dev/z-service/thrift_server/thrift_server start
 directory=/home/dev/z-service/thrift_server
 autostart=false
 startsecs=3

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function start() {
-    exec_with_dump
+    exec_with_dump $1 $2
 }
 
 
@@ -24,7 +24,7 @@ function Usage() {
 [ $# -ne 3 ] && Usage || action="$3"
 
 if [[ "isAction" == $(echo "$action" |awk -v actionList=$ActionList '{if(index(actionList,$1)>0){print "isAction"}}') ]] ; then
-        $action
+        $action $1 $2
 else
         Usage ;
 fi
