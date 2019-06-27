@@ -37,7 +37,7 @@ func (m *logicInfo) Hello(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	res, err := adapter.GetHelloAdapter(req, &m.cfg.Client)
+	res, err := adapter.GetHelloAdapter(req)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
