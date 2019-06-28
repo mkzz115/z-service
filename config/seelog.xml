@@ -1,0 +1,8 @@
+<seelog minlevels="info">
+    <outputs formatid="msg">
+        <rollingfile type="date" filename="$name$" datepattern="2006.01.02" maxrolls="7" />
+    </outputs>
+    <formats>
+        <format id="msg" format="[%Date %Time][%LEVEL] %Line:%Msg%n"/>
+    </formats>
+</seelog>
