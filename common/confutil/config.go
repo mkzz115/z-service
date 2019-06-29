@@ -5,6 +5,10 @@ import "github.com/BurntSushi/toml"
 type Config struct {
 	Server  ServerConfig      `toml:"server"`
 	Client  ClientConfig      `toml:"thrift_client"`
+	Account ServerConfig      `toml:"account"`
+	Forum   ServerConfig      `toml:"forum"`
+	Oneconf ServerConfig      `toml:"oneconf"`
+	Order   ServerConfig      `toml:"order"`
 	Depends DependServeConfig `toml:"depends_serve"`
 	Logger  LogConfig         `toml:"logger"`
 }

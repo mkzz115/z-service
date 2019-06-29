@@ -5,6 +5,7 @@ create table `forum_topic_t`(
     last_reply_uid bigint(20) NOT NULL default '0',
     last_reply_ts datetime not null default '0',
     create_ts datetime not null default '0',
+    status int(11) not null default '0',
     primary key (`topic_id`),
     key idx_uid (`uid`)
 ) ENGINE = InnoDB CHARSET = utf8mb4 COLLATE utf8mb4_bin;

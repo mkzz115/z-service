@@ -4,6 +4,9 @@ create table `user_account_t`(
     pass varchar(20) not null,
     third_id varchar(40) NOT NULL default '',
     third_type int(11) not null default '0',
+    status int(11) not null default '0',
+    login_status int(11) not null default '0',
+    login_ts datetime NOT NULL default '1971-01-01 00:00:00',
     primary key (`uid`),
     unique uniq_account (`account`)
 ) ENGINE = InnoDB CHARSET = utf8mb4 COLLATE utf8mb4_bin;

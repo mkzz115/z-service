@@ -1,9 +1,16 @@
 [server]
-    addr = "127.0.0.1:10230"
+    addr = "0.0.0.0:10230"
 
 [logger]
     path = "../log"
-
+[account]
+    addr = "0.0.0.0:12306"
+[forum]
+    addr = "0.0.0.0:12307"
+[oneconf]
+    addr = "0.0.0.0:12308"
+[order]
+    addr = "0.0.0.0:12309"
 [depends_serve]
     [depends_serve.mysql_config]
-        dsn = "mall:Mackie.115@tcp(172.17.172.25:3306)/mall?charset=utf8&parseTime=True&loc=Local&timeout=300ms&readTimeout=200ms&writeTimeout=200ms"
+        dsn = "mall:Mackie.115@tcp(47.94.105.202:3306)/mall?charset=utf8&parseTime=True&loc=Local&timeout=300ms&readTimeout=200ms&writeTimeout=200ms"
