@@ -15,9 +15,9 @@ create table `user_info_t` (
     phone varchar(22) NOT NULL default '',
     addr varchar(100) NOT NULL default '',
     image varchar(100) NOT NULL default '',
-    reg_ts timestamp NOT NULL default '',
+    reg_ts datetime NOT NULL default '1971-01-01 00:00:00',
     reg_type int(11) NOT NULL default '0',
-    primary key (`uid`),
+    primary key (`uid`)
 ) ENGINE = InnoDB CHARSET = utf8mb4 COLLATE utf8mb4_bin;
 
 create table `third_account_t` (

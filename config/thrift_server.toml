@@ -3,3 +3,7 @@
 
 [logger]
     path = "../log"
+
+[depends_serve]
+    [depends_serve.mysql_config]
+        dsn = "mall:Mackie.115@tcp(172.17.172.25:3306)/mall?charset=utf8&parseTime=True&loc=Local&timeout=300ms&readTimeout=200ms&writeTimeout=200ms"

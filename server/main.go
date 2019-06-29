@@ -4,9 +4,11 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/mkzz115/z-service.git/common/serve"
+	"github.com/mkzz115/z-service.git/server/processor"
+
 	"github.com/mkzz115/z-service.git/common/confutil"
 	"github.com/mkzz115/z-service.git/common/log"
-	"github.com/mkzz115/z-service.git/server/processor"
 )
 
 func main() {
@@ -25,12 +27,20 @@ func main() {
 		print("init error")
 		panic(err.Error())
 	}
-	s := processor.NewThriftServer(cfg)
-	if err := s.Init(); err != nil {
-		log.Error("server init error[%s]", err.Error())
-		os.Exit(-1)
+	//s := processor.NewThriftServer(cfg)
+	//if err := s.Init(); err != nil {
+	//	log.Error("server init error[%s]", err.Error())
+	//	os.Exit(-1)
+	//}
+	//if err := s.Start(); err != nil {
+	//	log.Error("server start error[%s]", err.Error())
+	//}
+	proc := processor.NewThriftProcess()
+	zserve := serve.NewZServer("thrift_serve", cfg.Server.Addr)
+	err = zserve.Init(cfg, processor.InitHandle, proc)
+	if err != nil {
+		print("zserve.Init error:", err.Error())
+		panic(err.Error())
 	}
-	if err := s.Start(); err != nil {
-		log.Error("server start error[%s]", err.Error())
-	}
+	zserve.Start()
 }

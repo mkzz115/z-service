@@ -3,9 +3,10 @@ package confutil
 import "github.com/BurntSushi/toml"
 
 type Config struct {
-	Server ServerConfig `toml:"server"`
-	Client ClientConfig `toml:"thrift_client"`
-	Logger LogConfig    `toml:"logger"`
+	Server  ServerConfig      `toml:"server"`
+	Client  ClientConfig      `toml:"thrift_client"`
+	Depends DependServeConfig `toml:"depends_serve"`
+	Logger  LogConfig         `toml:"logger"`
 }
 
 type ServerConfig struct {
@@ -19,6 +20,14 @@ type LogConfig struct {
 type ClientConfig struct {
 	Addr    string `toml:"addr"`
 	Timeout int32  `toml:"timeout"`
+}
+
+type DependServeConfig struct {
+	MysqlConfig MysqlConfig `toml:"mysql_config"`
+}
+
+type MysqlConfig struct {
+	Dsn string `toml:"dsn"`
 }
 
 func FromToml(path string) (*Config, error) {
